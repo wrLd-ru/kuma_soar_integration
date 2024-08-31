@@ -11,9 +11,9 @@
 5. Если инцидент есть, то сервис запрашивает дополнительные поля и обновляет его
 
 ## 2. Установка
-## Требования
-# - python3
-# - pip3
+  ## Требования
+       - python3
+       - pip3
 
 ### Создаем поля и категории инцидентов в SOAR
 
@@ -44,22 +44,24 @@ typing_extensions==4.5.0
 urllib3==2.0.2
 uvicorn==0.22.0
 ```
+
 Добавляем в него библиотеку pyrvision версии 1.0
-pip3 install pyrvision-1.1.10-py3-none-any.whl
+
+    pip3 install pyrvision-1.1.10-py3-none-any.whl
 
 ### Файлы сервиса
 1. Скачиваем архив и переносим его в директорию `/opt/rvision/kuma`
 2. В файлах `kuma.py`, `service.py` и `rvision.py` прописываем в `os.chdir()` путь до директории, в которой находятся файлы (в данном случае `/opt/rvision/kuma`)
 3. Редактируем файл `config.yaml`
 ```yaml
-rvision:
-  host: rv_host # имя хоста сервера SOAR
+script:
+  host: rv_host # имя хоста сервера, на котором будет работать сервис
   port: service_port # порт, на котором будет работать сервис
+rvision:
   tenant1_name:
-    token: токен SOAR1
+    token: API токен SOAR1
   tenant2_name:
-    token: токен SOAR2
-#  token: rv_token # токен в SOAR
+    token: API токен SOAR2
   protocol: https
 alert:
   alert_id_tag: kuma_alert_id # тег поля ID алерта в SOAR
