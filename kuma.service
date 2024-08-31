@@ -1,0 +1,11 @@
+[Unit]
+Description=KUMA service
+After=network.target
+
+[Service]
+Type=idle
+ExecStart=/opt/rvision_scripts/env/bin/python3 /opt/rvision_scripts/kuma/service.py
+Restart=always
+
+[Install]
+WantedBy=multy-user.target

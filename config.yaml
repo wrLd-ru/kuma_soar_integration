@@ -1,0 +1,16 @@
+script:
+  host: ip
+  port: port
+rvision:
+  tenant_1:
+    token: api_token_rvision1
+  tenant_2:
+    token: api_token_rvision2
+  protocol: https
+alert:
+  alert_id_tag: kuma_alert_id
+  kuma_url_tag: kuma_url
+  category: KUMA_ALERT
+kuma:
+  host: 0.0.0.0:7223
+  token: api_token_kuma
