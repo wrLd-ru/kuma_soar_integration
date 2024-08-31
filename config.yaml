@@ -1,6 +1,6 @@
 script:
-  host: ip
-  port: port
+  host: script_ip
+  port: script_port
 rvision:
   tenant_1:
     token: api_token_rvision1
@@ -12,5 +12,5 @@ alert:
   kuma_url_tag: kuma_url
   category: KUMA_ALERT
 kuma:
-  host: 0.0.0.0:7223
+  host: kuma_host:7223
   token: api_token_kuma
