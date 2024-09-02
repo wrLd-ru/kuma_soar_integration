@@ -57,21 +57,25 @@ uvicorn==0.22.0
 3. Редактируем файл `config.yaml`
 ```yaml
 script:
-  host: rv_host # имя хоста сервера, на котором будет работать сервис
-  port: service_port # порт, на котором будет работать сервис
+  host: script_ip # IP-адрес сервера, на котором будет работать сервис
+  port: sсript_port # порт, на котором будет работать сервис
 rvision:
-  tenant1_name:
-    token: API токен SOAR1
-  tenant2_name:
-    token: API токен SOAR2
+  tenant_1:
+    host: rvision1_ip  # IP-адрес инсталляции R-Vision
+    tenant_1_name: tenant1_name  # указать имя первого тенанта KUMA [название тенанта в KUMA должно совпадать с наименованием организации в R-Vision]
+    token: api_token_rvision1  # API-токен
+  tenant_2:
+    host: rvision2_ip  # IP-адрес второй инсталляции R-Vision
+    tenant_2_name: tenant2_name  #указать имя второго тенанта KUMA
+    token: api_token_rvision2
   protocol: https
 alert:
-  alert_id_tag: kuma_alert_id # тег поля ID алерта в SOAR
-  kuma_url_tag: kuma_url # тег поля ссылка на алерт в SOAR
-  category: KUMA_ALERT # категория инцидента в SOAR (может быть произвольным)
+  alert_id_tag: kuma_alert_id # тег поля ID алерта в SOAR [в конфиге менять не нужно]
+  kuma_url_tag: kuma_url # тег поля ссылка на алерт в SOAR [в конфиге менять не нужно]
+  category: KUMA_ALERT # категория инцидента в SOAR [в конфиге менять не нужно]
 kuma:
   host: kuma_host:7223 # имя сервера KUMA
-  token: kuma_api_token # API токен KUMA
+  token: api_token_kuma # API токен KUMA
 ```
 
 ### Настройка systemd
@@ -85,7 +89,7 @@ After=network.target
 [Service]
 Type=idle
 # ExecStart=путь до виртуального окружения/bin/python3 путь до файла service.py
-ExecStart=/opt/rvision_scripts/env/bin/python3 /opt/rvision_scripts/kuma/service.py
+ExecStart=/opt/rvision/env/bin/python3 /opt/rvision/kuma/service.py
 Restart=always
 
 [Install]
