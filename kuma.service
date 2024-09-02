@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=idle
+# ExecStart=путь до виртуального окружения/bin/python3 путь до файла service.py
 ExecStart=/opt/rvision_scripts/env/bin/python3 /opt/rvision_scripts/kuma/service.py
 Restart=always
 
