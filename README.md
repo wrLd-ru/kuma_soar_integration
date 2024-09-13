@@ -75,15 +75,17 @@ kuma:
   host: kuma_host:7223 # имя сервера KUMA
 ```
 
+
 ### Добавление API токенов в переменные окружения
 
 Необходимо добавить API токены в переменные окружения ОС:
 
+```shell
 echo 'export RV_TN1_TOKEN="api_token_rvision1"' >> ~/.bashrc
 echo 'export RV_TN2_TOKEN="api_token_rvision2"' >> ~/.bashrc
 echo 'export KUMA_TOKEN="api_token_kuma"' >> ~/.bashrc
 source ~/.bashrc
-
+```
 
 ### Настройка systemd
 1. Переносим файл `kuma.service` в директорию `/etc/systemd/system/`
