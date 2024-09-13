@@ -63,11 +63,9 @@ rvision:
   tenant_1:
     host: rvision1_ip  # IP-адрес инсталляции R-Vision
     tenant_1_name: tenant1_name  # указать имя первого тенанта KUMA [название тенанта в KUMA должно совпадать с наименованием организации в R-Vision]
-    token: api_token_rvision1  # API-токен
   tenant_2:
     host: rvision2_ip  # IP-адрес второй инсталляции R-Vision
     tenant_2_name: tenant2_name  #указать имя второго тенанта KUMA
-    token: api_token_rvision2
   protocol: https
 alert:
   alert_id_tag: kuma_alert_id # тег поля ID алерта в SOAR [в конфиге менять не нужно]
@@ -75,8 +73,17 @@ alert:
   category: KUMA_ALERT # категория инцидента в SOAR [в конфиге менять не нужно]
 kuma:
   host: kuma_host:7223 # имя сервера KUMA
-  token: api_token_kuma # API токен KUMA
 ```
+
+### Добавление API токенов в переменные окружения
+
+Необходимо добавить API токены в переменные окружения ОС:
+
+echo 'export RV_TN1_TOKEN="api_token_rvision1"' >> ~/.bashrc
+echo 'export RV_TN2_TOKEN="api_token_rvision2"' >> ~/.bashrc
+echo 'export KUMA_TOKEN="api_token_kuma"' >> ~/.bashrc
+source ~/.bashrc
+
 
 ### Настройка systemd
 1. Переносим файл `kuma.service` в директорию `/etc/systemd/system/`
