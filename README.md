@@ -88,14 +88,24 @@ After=network.target
 
 [Service]
 Type=idle
-# ExecStart=путь до виртуального окружения/bin/python3 путь до файла service.py
-ExecStart=/opt/rvision/env/bin/python3 /opt/rvision/kuma/service.py
+User=your_user           # Здесь укажите непривилегированного пользователя
+Group=your_group          # Опционально, если нужно указать группу
+# ExecStart=путь до виртуального окружения/bin/python3 /путь до файла service.py
+ExecStart=/opt/rvision_scripts/env/bin/python3 /opt/rvision_scripts/kuma/service.py
 Restart=always
 
 [Install]
-WantedBy=multy-user.target
+WantedBy=multi-user.target
 
 ```
+Пояснение:
+User=your_user — замените your_user на имя непривилегированного пользователя, от имени которого вы хотите запускать сервис. Этот пользователь должен иметь доступ к необходимым файлам и директориям.
+Group=your_group — если требуется, укажите группу, к которой принадлежит пользователь. Это опциональная настройка.
+Дополнительно:
+Убедитесь, что пользователь, указанный в директиве User, имеет права на выполнение скрипта и доступ к его файлам.
+Также важно проверить, что у пользователя есть доступ к Python-интерпретатору и виртуальному окружению.
+
+
 ### 3. Выполняем команды
 ```shell
 systemctl daemon-reload
