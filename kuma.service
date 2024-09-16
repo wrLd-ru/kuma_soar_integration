@@ -4,9 +4,10 @@ After=network.target
 
 [Service]
 Type=idle
-# ExecStart=путь до виртуального окружения/bin/python3 путь до файла service.py
-ExecStart=/opt/rvision_scripts/env/bin/python3 /opt/rvision_scripts/kuma/service.py
-Restart=always
+User=astraadmin
+ExecStart=/opt/rvision/kuma/kuma-service-master/venv/bin/python3 /opt/rvision/kuma/kuma-service-master/service.py
+EnvironmentFile=/opt/rvision/kuma/kuma-service-master/kuma.env
+Restart=on-failure
 
 [Install]
-WantedBy=multy-user.target
+WantedBy=multi-user.target
