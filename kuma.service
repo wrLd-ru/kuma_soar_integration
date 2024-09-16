@@ -4,9 +4,11 @@ After=network.target
 
 [Service]
 Type=idle
-# ExecStart=путь до виртуального окружения/bin/python3 путь до файла service.py
+User=your_user           # Здесь укажите непривилегированного пользователя
+Group=your_group          # Опционально, если нужно указать группу
+# ExecStart=путь до виртуального окружения/bin/python3 /путь до файла service.py
 ExecStart=/opt/rvision_scripts/env/bin/python3 /opt/rvision_scripts/kuma/service.py
 Restart=always
 
 [Install]
-WantedBy=multy-user.target
+WantedBy=multi-user.target
