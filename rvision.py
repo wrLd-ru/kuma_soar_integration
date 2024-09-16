@@ -27,7 +27,12 @@ class Alert(Incident):
 
 
 def create_alert(alert_id, kuma_url, company_name, level):
-    kuma = KUMA(config['kuma']['host'], config['kuma']['token'])
+    kuma_token = os.getenv('KUMA_TOKEN')
+
+    if kuma_token is None:
+      raise ValueError("KUMA_TOKEN не найден в переменных окружения!")
+
+    kuma = KUMA(config['kuma']['host'], kuma_token)
     kuma_alert = kuma.get_alert(alert_id)
 
     print(kuma_alert)
