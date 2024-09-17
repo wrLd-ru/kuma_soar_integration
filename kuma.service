@@ -7,7 +7,8 @@ Type=idle
 User=your_user           # Здесь укажите непривилегированного пользователя
 Group=your_group          # Опционально, если нужно указать группу
 # ExecStart=путь до виртуального окружения/bin/python3 /путь до файла service.py
-ExecStart=/opt/rvision_scripts/env/bin/python3 /opt/rvision_scripts/kuma/service.py
+ExecStart=/opt/rvision/kuma/kuma-service-master/venv/bin/python3 /opt/rvision/kuma/kuma-service-master/service.py
+EnvironmentFile=/opt/rvision/kuma/kuma-service-master/kuma.env # путь до файла с переменными окружения
 Restart=always
 
 [Install]
