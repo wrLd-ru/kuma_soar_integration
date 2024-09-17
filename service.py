@@ -20,17 +20,26 @@ async def incident(
         company: str = Form(...),
         level: str = Form(...)):
 
+    rv1_token = os.getenv('RV_TN1_TOKEN')
+    rv2_token = os.getenv('RV_TN2_TOKEN')
+
+    if rv1_token is None:
+      raise ValueError("RV_TN1_TOKEN не найден в переменных окружения kuma.env!")
+
+    if rv2_token is None:
+      raise ValueError("RV_TN2_TOKEN не найден в переменных окружения kuma.env!")
+            
     if company==config['rvision']['tenant_1']['tenant_1_name']:
         RvisionAPI(
         host=config['rvision']['tenant_1']['host'],
-        token=config['rvision']['tenant_1']['token'],
+        token=rv1_token,
         protocol=config['rvision']['protocol'],
         verify=False)
 
     if company==config['rvision']['tenant_2']['tenant_2_name']:
         RvisionAPI(
         host=config['rvision']['tenant_2']['host'],
-        token=config['rvision']['tenant_2']['token'],
+        token=rv2_token,
         protocol=config['rvision']['protocol'],
         verify=False)
 
