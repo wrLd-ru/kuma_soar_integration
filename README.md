@@ -12,8 +12,8 @@
 
 ## 2. Установка
   ### Требования
-       - python3.6+
-       - pip3
+       - python3.8.19
+       - pip3 24.2
 
 ### Создаем поля и категории инцидентов в SOAR
 
@@ -29,21 +29,21 @@
 Собираем виртуальное окружение python с использованием файла `requirements.txt`
 ```requirements.txt
 anyio==3.6.2
-certifi==2023.5.7
+certifi==2024.07.04
 charset-normalizer==3.1.0
 click==8.1.3
 colorama==0.4.6
-fastapi==0.95.2
+fastapi==0.109.1
 h11==0.14.0
-idna==3.4
-pydantic==1.10.7
-python-multipart==0.0.6
+idna==3.7
+pydantic==2.4.0
+python-multipart==0.0.7
 PyYAML==6.0
-requests==2.30.0
+requests==2.32.2
 sniffio==1.3.0
-starlette==0.27.0
-typing_extensions==4.5.0
-urllib3==2.0.2
+starlette==0.35.1
+typing_extensions==4.8.0
+urllib3==2.2.2
 uvicorn==0.22.0
 ```
 
