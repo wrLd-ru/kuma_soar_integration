@@ -12,7 +12,7 @@
 
 ## 2. Установка
   ### Требования
-       - python3.8.19
+       - python 3.8.19
        - pip3 24.2
 
 ### Создаем поля и категории инцидентов в SOAR
@@ -51,6 +51,8 @@ uvicorn==0.22.0
 
     pip3 install pyrvision-1.1.10-py3-none-any.whl
 
+Далее необходимо создать файл `kuma.env` из примера `kuma.env.example` и прописать путь до файла в `kuma.service` в поле EnvironmentFile.
+
 ### Файлы сервиса
 1. Скачиваем архив и переносим его в директорию `/opt/rvision/kuma`
 2. В файлах `kuma.py`, `service.py` и `rvision.py` прописываем в `os.chdir()` путь до директории, в которой находятся файлы (в данном случае `/opt/rvision/kuma`)
@@ -63,11 +65,9 @@ rvision:
   tenant_1:
     host: rvision1_ip  # IP-адрес инсталляции R-Vision
     tenant_1_name: tenant1_name  # указать имя первого тенанта KUMA [название тенанта в KUMA должно совпадать с наименованием организации в R-Vision]
-    token: api_token_rvision1  # API-токен
   tenant_2:
     host: rvision2_ip  # IP-адрес второй инсталляции R-Vision
     tenant_2_name: tenant2_name  #указать имя второго тенанта KUMA
-    token: api_token_rvision2
   protocol: https
 alert:
   alert_id_tag: kuma_alert_id # тег поля ID алерта в SOAR [в конфиге менять не нужно]
@@ -75,7 +75,6 @@ alert:
   category: KUMA_ALERT # категория инцидента в SOAR [в конфиге менять не нужно]
 kuma:
   host: kuma_host:7223 # имя сервера KUMA
-  token: api_token_kuma # API токен KUMA
 ```
 
 ### Настройка systemd
@@ -96,7 +95,6 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
 ```
 Пояснение:
 1. `User=your_user` — замените your_user на имя непривилегированного пользователя, от имени которого вы хотите запускать сервис. Этот пользователь должен иметь доступ к необходимым файлам и директориям.
