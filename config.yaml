@@ -5,11 +5,9 @@ rvision:
   tenant_1:
     host: rvision1_ip
     tenant_1_name: tenant1_name
-    token: api_token_rvision1
   tenant_2:
     host: rvision2_ip
     tenant_2_name: tenant2_name
-    token: api_token_rvision2
   protocol: https
 alert:
   alert_id_tag: kuma_alert_id
@@ -17,4 +15,3 @@ alert:
   category: KUMA_ALERT
 kuma:
   host: kuma_host:7223
-  token: api_token_kuma
